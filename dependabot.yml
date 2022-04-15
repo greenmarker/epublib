@@ -1,0 +1,20 @@
+version: 2
+updates:
+
+  # epublib-parent
+  - package-ecosystem: "maven"
+    directory: "epublib-parent"
+    schedule:
+      interval: "daily"
+
+  # epublib-core
+  - package-ecosystem: "maven"
+    directory: "epublib-core"
+    schedule:
+      interval: "daily"
+
+  # epublib-tools
+  - package-ecosystem: "tools"
+    directory: "epublib-parent"
+    schedule:
+      interval: "daily"
