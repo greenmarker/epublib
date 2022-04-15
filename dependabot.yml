@@ -5,16 +5,16 @@ updates:
   - package-ecosystem: "maven"
     directory: "epublib-parent"
     schedule:
-      interval: "daily"
+      interval: "monthly"
 
   # epublib-core
   - package-ecosystem: "maven"
     directory: "epublib-core"
     schedule:
-      interval: "daily"
+      interval: "monthly"
 
   # epublib-tools
   - package-ecosystem: "tools"
     directory: "epublib-parent"
     schedule:
-      interval: "daily"
+      interval: "monthly"
