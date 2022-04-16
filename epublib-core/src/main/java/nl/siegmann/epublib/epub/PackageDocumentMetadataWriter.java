@@ -33,12 +33,12 @@ public class PackageDocumentMetadataWriter extends PackageDocumentBase {
 		serializer.setPrefix(PREFIX_OPF, NAMESPACE_OPF);
 		
 		writeIdentifiers(book.getMetadata().getIdentifiers(), serializer);
-		writeSimpleMetdataElements(DCTags.title, book.getMetadata().getTitles(), serializer);
-		writeSimpleMetdataElements(DCTags.subject, book.getMetadata().getSubjects(), serializer);
-		writeSimpleMetdataElements(DCTags.description, book.getMetadata().getDescriptions(), serializer);
-		writeSimpleMetdataElements(DCTags.publisher, book.getMetadata().getPublishers(), serializer);
-		writeSimpleMetdataElements(DCTags.type, book.getMetadata().getTypes(), serializer);
-		writeSimpleMetdataElements(DCTags.rights, book.getMetadata().getRights(), serializer);
+		writeSimpleMetadataElements(DCTags.title, book.getMetadata().getTitles(), serializer);
+		writeSimpleMetadataElements(DCTags.subject, book.getMetadata().getSubjects(), serializer);
+		writeSimpleMetadataElements(DCTags.description, book.getMetadata().getDescriptions(), serializer);
+		writeSimpleMetadataElements(DCTags.publisher, book.getMetadata().getPublishers(), serializer);
+		writeSimpleMetadataElements(DCTags.type, book.getMetadata().getTypes(), serializer);
+		writeSimpleMetadataElements(DCTags.rights, book.getMetadata().getRights(), serializer);
 
 		// write authors
 		for(Author author: book.getMetadata().getAuthors()) {
@@ -103,7 +103,7 @@ public class PackageDocumentMetadataWriter extends PackageDocumentBase {
 		serializer.endTag(NAMESPACE_OPF, OPFTags.metadata);
 	}
 	
-	private static void writeSimpleMetdataElements(String tagName, List<String> values, XmlSerializer serializer) throws IllegalArgumentException, IllegalStateException, IOException {
+	private static void writeSimpleMetadataElements(String tagName, List<String> values, XmlSerializer serializer) throws IllegalArgumentException, IllegalStateException, IOException {
 		for(String value: values) {
 			if (StringUtil.isBlank(value)) {
 				continue;

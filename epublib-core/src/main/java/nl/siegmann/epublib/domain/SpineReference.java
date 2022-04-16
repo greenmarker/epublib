@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 /**
  * A Section of a book.
- * Represents both an item in the package document and a item in the index.
+ * Represents both an item in the package document and an item in the index.
  * 
  * @author paul
  *

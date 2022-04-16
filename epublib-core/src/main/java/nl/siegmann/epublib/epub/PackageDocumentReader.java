@@ -46,14 +46,14 @@ public class PackageDocumentReader extends PackageDocumentBase {
 	private static final String[] POSSIBLE_NCX_ITEM_IDS = new String[] {"toc", "ncx", "ncxtoc"};
 	
 	
-	public static void read(Resource packageResource, EpubReader epubReader, Book book, Resources resources) throws UnsupportedEncodingException, SAXException, IOException, ParserConfigurationException {
+	public static void read(Resource packageResource, EpubReader epubReader, Book book, Resources resources) throws SAXException, IOException, ParserConfigurationException {
 		Document packageDocument = ResourceUtil.getAsDocument(packageResource);
 		String packageHref = packageResource.getHref();
 		resources = fixHrefs(packageHref, resources);
 		readGuide(packageDocument, epubReader, book, resources);
 		
 		// Books sometimes use non-identifier ids. We map these here to legal ones
-		Map<String, String> idMapping = new HashMap<String, String>();
+		Map<String, String> idMapping = new HashMap<>();
 		
 		resources = readManifest(packageDocument, packageHref, epubReader, resources, idMapping);
 		book.setResources(resources);
@@ -84,8 +84,8 @@ public class PackageDocumentReader extends PackageDocumentBase {
 	 * @param packageDocument
 	 * @param packageHref
 	 * @param epubReader
-	 * @param book
-	 * @param resourcesByHref
+	 * @param resources e-book resources
+	 * @param idMapping resourcesByHref
 	 * @return a Map with resources, with their id's as key.
 	 */
 	private static Resources readManifest(Document packageDocument, String packageHref,
@@ -200,9 +200,8 @@ public class PackageDocumentReader extends PackageDocumentBase {
 	 * Reads the document's spine, containing all sections in reading order.
 	 * 
 	 * @param packageDocument
-	 * @param epubReader
-	 * @param book
-	 * @param resourcesById
+	 * @param resources e-book resources
+	 * @param idMapping resourcesById
 	 * @return the document's spine, containing all sections in reading order.
 	 */
 	private static Spine readSpine(Document packageDocument, Resources resources, Map<String, String> idMapping) {
@@ -274,8 +273,8 @@ public class PackageDocumentReader extends PackageDocumentBase {
 	 * Here we try several ways of finding this table of contents resource.
 	 * We try the given attribute value, some often-used ones and finally look through all resources for the first resource with the table of contents mimetype.
 	 * 
-	 * @param spineElement
-	 * @param resourcesById
+	 * @param tocResourceId spineElement
+	 * @param resources
 	 * @return the Resource containing the table of contents
 	 */
 	static Resource findTableOfContentsResource(String tocResourceId, Resources resources) {
@@ -353,7 +352,6 @@ public class PackageDocumentReader extends PackageDocumentBase {
 	 * Keeps the cover resource in the resources map
 	 * @param packageDocument
 	 * @param book
-	 * @param resources
 	 */
 	private static void readCover(Document packageDocument, Book book) {
 		

@@ -6,7 +6,7 @@ import java.io.Writer;
 /**
  * Writer with the close() disabled.
  * We write multiple documents to a ZipOutputStream.
- * Some of the formatters call a close() after writing their data.
+ * Some formatters call a close() after writing their data.
  * We don't want them to do that, so we wrap regular Writers in this NoCloseWriter.
  * 
  * @author paul
@@ -14,7 +14,7 @@ import java.io.Writer;
  */
 public class NoCloseWriter extends Writer {
 
-	private Writer writer;
+	private final Writer writer;
 	
 	public NoCloseWriter(Writer writer) {
 		this.writer = writer;

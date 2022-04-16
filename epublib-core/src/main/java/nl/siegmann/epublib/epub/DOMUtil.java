@@ -99,7 +99,7 @@ class DOMUtil {
 	 * The result is trim()-ed.
 	 * 
 	 * The reason for this more complicated procedure instead of just returning the data of the firstChild is that
-	 * when the text is Chinese characters then on Android each Characater is represented in the DOM as
+	 * when the text is Chinese characters then on Android each Character is represented in the DOM as
 	 * an individual Text node.
 	 * 
 	 * @param parentElement

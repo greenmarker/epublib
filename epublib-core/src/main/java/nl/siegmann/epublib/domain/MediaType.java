@@ -9,7 +9,7 @@ import java.util.Collection;
  * 
  * Examples of mediatypes are image/gif, text/css and application/xhtml+xml
  * 
- * All allowed mediaTypes are maintained bye the MediaTypeService.
+ * All allowed mediaTypes are maintained by the MediaTypeService.
  * 
  * @see nl.siegmann.epublib.service.MediatypeService
  * 
@@ -21,9 +21,9 @@ public class MediaType implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -7256091153727506788L;
-	private String name;
-	private String defaultExtension;
-	private Collection<String> extensions;
+	private final String name;
+	private final String defaultExtension;
+	private final Collection<String> extensions;
 	
 	public MediaType(String name, String defaultExtension) {
 		this(name, defaultExtension, new String[] {defaultExtension});

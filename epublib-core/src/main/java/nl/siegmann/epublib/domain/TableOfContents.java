@@ -9,7 +9,7 @@ import java.util.Set;
 
 /**
  * The table of contents of the book.
- * The TableOfContents is a tree structure at the root it is a list of TOCReferences, each if which may have as children another list of TOCReferences.
+ * The TableOfContents is a tree structure at the root it is a list of TOCReferences, each in which may have as children another list of TOCReferences.
  * 
  * The table of contents is used by epub as a quick index to chapters and sections within chapters.
  * It may contain duplicate entries, may decide to point not to certain chapters, etc.
@@ -150,7 +150,7 @@ public class TableOfContents implements Serializable {
 				result = null;
 			}
 			if (result == null) {
-				paddTOCReferences(currentTocReferences, pathElements, i, sectionTitlePrefix, sectionNumberSeparator);
+				padTOCReferences(currentTocReferences, pathElements, i, sectionTitlePrefix, sectionNumberSeparator);
 				result = currentTocReferences.get(currentIndex);
 			}
 			currentTocReferences = result.getChildren();
@@ -159,8 +159,8 @@ public class TableOfContents implements Serializable {
 		return result;
 	}
 	
-	private void paddTOCReferences(List<TOCReference> currentTocReferences,
-			int[] pathElements, int pathPos, String sectionPrefix, String sectionNumberSeparator) {
+	private void padTOCReferences(List<TOCReference> currentTocReferences,
+								  int[] pathElements, int pathPos, String sectionPrefix, String sectionNumberSeparator) {
 		for (int i = currentTocReferences.size(); i <= pathElements[pathPos]; i++) {
 			String sectionTitle = createSectionTitle(pathElements, pathPos, i, sectionPrefix,
 					sectionNumberSeparator);
@@ -186,7 +186,7 @@ public class TableOfContents implements Serializable {
 
 	public TOCReference addTOCReference(TOCReference tocReference) {
 		if (tocReferences == null) {
-			tocReferences = new ArrayList<TOCReference>();
+			tocReferences = new ArrayList<>();
 		}
 		tocReferences.add(tocReference);
 		return tocReference;
@@ -198,8 +198,8 @@ public class TableOfContents implements Serializable {
 	 * @return All unique references (unique by href) in the order in which they are referenced to in the table of contents.
 	 */
 	public List<Resource> getAllUniqueResources() {
-		Set<String> uniqueHrefs = new HashSet<String>();
-		List<Resource> result = new ArrayList<Resource>();
+		Set<String> uniqueHrefs = new HashSet<>();
+		List<Resource> result = new ArrayList<>();
 		getAllUniqueResources(uniqueHrefs, result, tocReferences);
 		return result;
 	}

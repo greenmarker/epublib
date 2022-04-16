@@ -6,7 +6,7 @@ package nl.siegmann.epublib.domain;
  * 
  * Examples are 'creator', 'blurb writer', etc.
  * 
- * This is contains the complete Library of Concress relator list.
+ * This is contains the complete Library of Congress relator list.
  * 
  * @see <a href="http://www.loc.gov/marc/relators/relaterm.html">MARC Code List for Relators</a>
  * 

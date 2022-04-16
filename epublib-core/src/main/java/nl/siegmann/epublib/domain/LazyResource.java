@@ -25,8 +25,8 @@ public class LazyResource extends Resource {
 	 * 
 	 */
 	private static final long serialVersionUID = 5089400472352002866L;
-	private String filename;
-	private long cachedSize;
+	private final String filename;
+	private final long cachedSize;
 	
 	private static final Logger LOG = LoggerFactory.getLogger(LazyResource.class);
 	
@@ -55,7 +55,7 @@ public class LazyResource extends Resource {
      * it is accessed.
      *
      * @param in
-     * @param fileName
+     * @param filename
      * @param length
      * @param href
      * @throws IOException
@@ -120,8 +120,7 @@ public class LazyResource extends Resource {
 	}
 
 	
-	private InputStream getResourceStream() throws FileNotFoundException,
-			IOException {
+	private InputStream getResourceStream() throws IOException {
 		ZipFile zipFile = new ZipFile(filename);
 		ZipEntry zipEntry = zipFile.getEntry(originalHref);
 		if (zipEntry == null) {

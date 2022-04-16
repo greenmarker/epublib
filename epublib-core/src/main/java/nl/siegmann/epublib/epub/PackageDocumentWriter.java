@@ -67,7 +67,6 @@ public class PackageDocumentWriter extends PackageDocumentBase {
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	 * @throws IllegalArgumentException 
-	 * @throws XMLStreamException
 	 */
 	private static void writeSpine(Book book, EpubWriter epubWriter, XmlSerializer serializer) throws IllegalArgumentException, IllegalStateException, IOException {
 		serializer.startTag(NAMESPACE_OPF, OPFTags.spine);
@@ -105,7 +104,7 @@ public class PackageDocumentWriter extends PackageDocumentBase {
 	}
 
 	private static List<Resource> getAllResourcesSortById(Book book) {
-		List<Resource> allResources = new ArrayList<Resource>(book.getResources().getAll());
+		List<Resource> allResources = new ArrayList<>(book.getResources().getAll());
 		Collections.sort(allResources, new Comparator<Resource>() {
 
 			@Override
@@ -118,12 +117,12 @@ public class PackageDocumentWriter extends PackageDocumentBase {
 	
 	/**
 	 * Writes a resources as an item element
+	 * @param book
 	 * @param resource
 	 * @param serializer
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	 * @throws IllegalArgumentException 
-	 * @throws XMLStreamException
 	 */
 	private static void writeItem(Book book, Resource resource, XmlSerializer serializer) throws IllegalArgumentException, IllegalStateException, IOException {
 		if(resource == null ||
@@ -152,6 +151,8 @@ public class PackageDocumentWriter extends PackageDocumentBase {
 
 	/**
 	 * List all spine references
+	 * @param spine
+	 * @param serializer
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	 * @throws IllegalArgumentException 
